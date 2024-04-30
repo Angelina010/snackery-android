@@ -2,6 +2,7 @@ package com.example.snackery
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,10 +22,11 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun VendingMachineCard(vendingMachine: VendingMachine) {
+fun VendingMachineCard(vendingMachine: VendingMachine, onClick: ()-> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(onClick = onClick)
     ) {
         Box(
         ) {
@@ -32,14 +34,14 @@ fun VendingMachineCard(vendingMachine: VendingMachine) {
                 painter = painterResource(id = vendingMachine.imageResourceId),
                 contentDescription = null,
                 modifier = Modifier
-                    .width(200.dp)
-                    .height(100.dp),
+                    .width(220.dp)
+                    .height(120.dp),
                 contentScale = ContentScale.Crop
             )
             val gradient = Brush.verticalGradient(
                 colors = listOf(Color.Transparent, Color.Black),
             )
-            Box(modifier = Modifier.width(200.dp).height(100.dp).background(gradient)){
+            Box(modifier = Modifier.width(220.dp).height(120.dp).background(gradient)){
 
             }
             Text(modifier = Modifier.align(Alignment.BottomStart).padding(start = 8.dp, bottom = 8.dp),

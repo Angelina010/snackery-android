@@ -25,13 +25,15 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavHostController
 
 
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavHostController) {
 //    val vendId = 3
 //    val vendingMachine = VendingRepository.vendingMachineList.find { vendingMachine -> vendingMachine.id == vendId }
 
@@ -84,11 +86,12 @@ fun MainScreen() {
                     onClick = { /* Handle button click */ },
                     modifier = Modifier
                         .padding(vertical = 8.dp, horizontal = 4.dp)
-                        .height(48.dp), // Ensure all buttons have the same height
+                        .height(40.dp), // Ensure all buttons have the same height
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color(0xFFDC6601), // Same color as banner
                         contentColor = Color.White
-                    )
+                    ),
+                    shape = RoundedCornerShape(32.dp)
                 ) {
                     Text(text = button)
                 }
@@ -110,7 +113,9 @@ fun MainScreen() {
                     Spacer(modifier = Modifier.width(16.dp))
                 }
                 items(VendingRepository.vendingMachineList) { vendingMachine ->
-                    VendingMachineCard(vendingMachine)
+                    VendingMachineCard(vendingMachine, onClick = {
+                        navController.navigate("details/${vendingMachine.id}")
+                    })
                     Spacer(modifier = Modifier.width(12.dp))
                 }
             }
@@ -132,7 +137,9 @@ fun MainScreen() {
                         vendingMachine.isOpen
                     }
                 items(openNowMachines) { vendingMachine ->
-                    VendingMachineCard(vendingMachine)
+                    VendingMachineCard(vendingMachine, onClick = {
+                        navController.navigate("details/${vendingMachine.id}")
+                    })
                     Spacer(modifier = Modifier.width(8.dp))
                 }
             }
