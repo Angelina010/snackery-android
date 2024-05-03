@@ -24,5 +24,11 @@ fun MainNavigation(navController: NavHostController){
                 backStackEntry ->
             DetailsScreen(navController, backStackEntry.arguments?.getString("vendId"))
         }
+
+        composable("search"){
+                backStackEntry ->
+            SearchScreen(navController)
+        }
     }
 }
+
