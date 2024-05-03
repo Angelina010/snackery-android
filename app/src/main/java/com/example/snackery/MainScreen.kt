@@ -12,13 +12,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -29,7 +23,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
@@ -62,11 +59,28 @@ fun MainScreen(navController: NavHostController) {
 
         // To search page Search Bar
         Row(
-            Modifier.clickable(onClick = {
-                navController.navigate("search")
-            }).padding(20.dp).fillMaxWidth(0.8f).align(Alignment.CenterHorizontally)
+            modifier = Modifier
+                .clickable(onClick = {
+                    navController.navigate("search")
+                })
+                .padding(20.dp)
+                .fillMaxWidth()
+                .align(Alignment.CenterHorizontally)
+                .background(Color.LightGray.copy(alpha = 0.4f), shape = RoundedCornerShape(16.dp))
+                .padding(horizontal = 24.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
         ){
-            Text(text = "Search...")
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = null,
+                tint = Color.Gray,
+                modifier = Modifier.padding(start = 8.dp)
+            )
+            Text(
+                text = "Search...",
+                color = Color.Gray,
+                modifier = Modifier.padding(horizontal = 8.dp)
+            )
         }
 
         // Lazy row for buttons

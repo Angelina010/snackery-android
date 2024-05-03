@@ -100,14 +100,14 @@ fun SearchScreen(navController: NavController) {
                     onClick = { navController.navigate(Screen.Home.route) },
                     modifier = Modifier
                         .padding(vertical = 8.dp, horizontal = 4.dp)
-                        .height(40.dp), // Ensure all buttons have the same height
+                        .height(40.dp).align(Alignment.CenterHorizontally), // Ensure all buttons have the same height
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color(0xFFDC6601), // Same color as banner
                         contentColor = Color.White
                     ),
                     shape = RoundedCornerShape(32.dp)
                 ) {
-                    androidx.compose.material.Text(text = "search...")
+                    androidx.compose.material.Text(text = "Home")
                 }
             }
         }
