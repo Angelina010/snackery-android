@@ -1,6 +1,7 @@
 package com.example.snackery
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,10 +24,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
@@ -56,25 +59,15 @@ fun MainScreen(navController: NavHostController) {
             )
         }
 
-        // Search Bar
-        var searchText by remember { mutableStateOf("") }
 
-        TextField(
-            value = searchText,
-            onValueChange = { searchText = it },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            placeholder = { Text(text = "Search...") },
-            singleLine = true,
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.White,
-                cursorColor = Color.Black,
-                textColor = Color.Black,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            )
-        )
+        // To search page Search Bar
+        Row(
+            Modifier.clickable(onClick = {
+                navController.navigate("search")
+            }).padding(20.dp).fillMaxWidth(0.8f).align(Alignment.CenterHorizontally)
+        ){
+            Text(text = "Search...")
+        }
 
         // Lazy row for buttons
         LazyRow(
@@ -112,6 +105,7 @@ fun MainScreen(navController: NavHostController) {
                 item {
                     Spacer(modifier = Modifier.width(16.dp))
                 }
+                //change (VendingRepository.vendingMachineList) to function that takes in filters, returns updated list
                 items(VendingRepository.vendingMachineList) { vendingMachine ->
                     VendingMachineCard(vendingMachine, onClick = {
                         navController.navigate("details/${vendingMachine.id}")

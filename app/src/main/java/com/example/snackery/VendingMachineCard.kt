@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 fun VendingMachineCard(vendingMachine: VendingMachine, onClick: ()-> Unit) {
     Card(
         modifier = Modifier
-            .fillMaxWidth()
+            //.fillMaxWidth()
             .clickable(onClick = onClick)
     ) {
         Box(

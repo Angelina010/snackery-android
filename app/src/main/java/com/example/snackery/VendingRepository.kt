@@ -2,6 +2,7 @@ package com.example.snackery
 
 object VendingRepository {
     val vendingMachineList = listOf(
+
         VendingMachine(
             id = 0,
             campusArea = "North",
@@ -54,5 +55,6 @@ object VendingRepository {
                 Product(name = "Sports Drink", type = "Beverage", price = 32.0)
             )
         )
+
     )
 }
