@@ -5,5 +5,7 @@ data class VendingMachine(
     val campusArea: String,
     val location: String,
     val imageResourceId: Int,
-    val isOpen: Boolean
+    val isOpen: Boolean,
+    val type: String,
+    val products: List<Product>
 )
