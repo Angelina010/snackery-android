@@ -1,7 +1,9 @@
 package com.example.snackery
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,14 +25,17 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun Payment(onClick: ()->Unit) {
-    Column(modifier = Modifier.fillMaxHeight(0.33f)
+    Column(modifier = Modifier.fillMaxHeight(0.35f)
         .fillMaxWidth()) {
-        Text(
-            text = "Payment Methods",
-            style = MaterialTheme.typography.headlineMedium,
-            modifier = Modifier.padding(vertical = 16.dp)
-        )
-
+        Box(Modifier.background(color =  Color(0xFFDC6601)).align(Alignment.CenterHorizontally).fillMaxWidth()){
+            Text(
+                text = "Payment Methods",
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.padding(vertical = 16.dp, horizontal = 16.dp),
+                color = Color.White
+            )
+        }
+        Spacer(Modifier.height(20.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -64,7 +69,7 @@ fun Payment(onClick: ()->Unit) {
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(25.dp))
 
         Button(
             onClick = onClick,

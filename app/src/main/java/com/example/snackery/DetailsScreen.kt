@@ -14,7 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -51,7 +54,7 @@ fun DetailsScreen(navController: NavController, vendId: String?) {
                     topBar = {
                         TopAppBar(
                             title = {
-                                Text(text = vendingMachine.location)
+                                Text(vendingMachine.location)
                             },
                             navigationIcon = {
                                 IconButton(onClick = { navController.navigate("home") }) {
@@ -62,7 +65,7 @@ fun DetailsScreen(navController: NavController, vendId: String?) {
                                 }
                             }
                         )
-                    }
+                    },
                 ) {
                     LazyColumn(
                         modifier = Modifier
@@ -97,18 +100,29 @@ fun DetailsScreen(navController: NavController, vendId: String?) {
                                 }
                             }
                         }
+
                         item {
                             // Display vending machine details
                             Text(
                                 text = "Machine Type: ${vendingMachine.type}",
                                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                             )
-                            // Display vending machine status
-                            Text(
-                                text = "Status: ${if (vendingMachine.isOpen) "Open" else "Closed"}",
-                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-                            )
+                        }
 
+                        item {
+                            Box(
+                                modifier = Modifier.fillMaxSize().padding(vertical = 20.dp)
+
+                            ) {
+                                // Display vending machine status
+                                Text(
+                                    text = "Status: ${if (vendingMachine.isOpen) "Open" else "Closed"}",
+                                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                                )
+                            }
+
+                        }
+                        item{
                             // Display product list with prices
                             Text(
                                 text = "Products:",
